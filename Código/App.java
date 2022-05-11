@@ -23,7 +23,7 @@ public class App {
 
         while (peso < pesoControle) {
 
-            pesoAdicional = (pesoControle - peso > capacidade) ? random.nextInt(capacidade - 1)
+            pesoAdicional = (pesoControle - peso > capacidade/2) ? random.nextInt(capacidade/2)
                     : 1 + random.nextInt(pesoControle - peso);
             itens[index % numeroDeItens].addPeso(pesoAdicional);
             peso += pesoAdicional;
