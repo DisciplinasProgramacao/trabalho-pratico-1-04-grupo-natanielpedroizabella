@@ -34,9 +34,6 @@ public class ForcaBruta {
                     listaItemMochila.add(itemMochila);
                 }
             }
-            // System.out.println(iteracaoAtual);
-            // System.out.println(iteracaoAtual.stream().mapToInt(i -> i.getPeso()).sum());
-            // System.out.println(iteracaoAtual.stream().mapToInt(i -> i.getValor()).sum());
             iteracaoAtual.removeAll(iteracaoAtual);
             return;
         }
