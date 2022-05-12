@@ -6,12 +6,14 @@ public class ItemMochila {
     private char name;
     private int peso;
     private int valor;
+    private Double valorPeso;
 
     public ItemMochila() {
 
         this.name = NAME++;
         this.peso = 1;
         this.valor = 1;
+       
     }
 
     public char getName() {
@@ -26,12 +28,20 @@ public class ItemMochila {
         return valor;
     }
 
+    public Double getValorPeso(){
+        return valorPeso;
+    }
+
     public void addPeso(int peso) {
         this.peso += peso;
     }
 
     public void addValor(int valor) {
         this.valor += valor;
+    }
+
+    public void setVp(){
+        this.valorPeso =((double)this.valor/(double)this.peso);
     }
 
     @Override
