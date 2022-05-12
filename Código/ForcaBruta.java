@@ -7,31 +7,43 @@ public class ForcaBruta {
 
     private List<ItemMochila> listaItemMochila = new ArrayList<>();
 
-    public void forcaBruta(ItemMochila arr[], ItemMochila data[], int start, int end, int index, int r) {
+    public void forcaBruta(ItemMochila arr[], ItemMochila data[], int start, int end, int index, int r,
+            int capacidade) {
 
         if (index == r) {
-            int peso = 0;
-            int valor = 0;
-            String itens = "";
-            // System.out.print("Nº " + controle + " - ");
+            List<ItemMochila> iteracaoAtual = new ArrayList<>();
             controle++;
+
             for (int j = 0; j < r; j++) {
-                // System.out.print(data[j].getName() + " ");
-                itens += (data[j].getName() + " ");
-                peso += data[j].getPeso();
-                valor += data[j].getValor();
-                listaItemMochila.add(data[j]);
+
+                iteracaoAtual.add(data[j]);
+
+            }
+            if (this.listaItemMochila.size() == 0
+                    && listaItemMochila.stream().mapToInt(i -> i.getPeso()).sum() <= capacidade) {
+                iteracaoAtual.stream().forEach(i -> listaItemMochila.add(i));
             }
 
-            // System.out.print(itens);
-            // System.out.print("- Peso: " + peso);
-            // System.out.println(" - Valor: " + valor);
-            // return;
+            else if (iteracaoAtual.stream().mapToInt(i -> i.getPeso()).sum() <= capacidade &&
+                    iteracaoAtual.stream().mapToInt(i -> i.getValor()).sum() > listaItemMochila.stream()
+                            .mapToInt(i -> i.getValor()).sum()) {
+
+                listaItemMochila.removeAll(listaItemMochila);
+
+                for (ItemMochila itemMochila : iteracaoAtual) {
+                    listaItemMochila.add(itemMochila);
+                }
+            }
+            // System.out.println(iteracaoAtual);
+            // System.out.println(iteracaoAtual.stream().mapToInt(i -> i.getPeso()).sum());
+            // System.out.println(iteracaoAtual.stream().mapToInt(i -> i.getValor()).sum());
+            iteracaoAtual.removeAll(iteracaoAtual);
+            return;
         }
 
         for (int i = start; i <= end && end - i + 1 >= r - index; i++) {
             data[index] = arr[i];
-            forcaBruta(arr, data, i + 1, end, index + 1, r);
+            forcaBruta(arr, data, i + 1, end, index + 1, r, capacidade);
         }
 
     }
