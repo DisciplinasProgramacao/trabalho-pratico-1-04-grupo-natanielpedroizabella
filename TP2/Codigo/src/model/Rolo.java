@@ -23,7 +23,7 @@ public class Rolo {
     public double[] custoPorRecucao() {
         double[] custos = new double[3];
         for (int i = 0; i < custos.length; i++) {
-            custos[i]=this.reducoes[i]/(i+1);
+            custos[i] = (double) this.reducoes[i] / (i + 1);
         }
         return custos;
     }
