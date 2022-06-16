@@ -7,9 +7,9 @@ public class Rolo {
     private int espessuraEntrada;
     private int[] reducoes;
 
-    public Rolo(int espessuraEntrada, int reducao1mm, int reducao2mm, int reducao3mm) {
+    public Rolo(int espessuraEntrada, int[] reducoes) {
         this.espessuraEntrada = espessuraEntrada;
-        this.reducoes= new int[]{reducao1mm, reducao2mm, reducao3mm};
+        this.reducoes= reducoes;
     }
 
     public int getEspessuraEntrada() {
@@ -21,7 +21,7 @@ public class Rolo {
     }
 
     public double[] custoPorRecucao() {
-        double[] custos = new double[3];
+        double[] custos = new double[this.reducoes.length];
         for (int i = 0; i < custos.length; i++) {
             custos[i]=this.reducoes[i]/(i+1);
         }
