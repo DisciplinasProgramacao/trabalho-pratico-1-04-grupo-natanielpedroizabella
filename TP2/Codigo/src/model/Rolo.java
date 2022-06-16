@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 public class Rolo {
 
     private int espessuraEntrada;
@@ -9,7 +7,7 @@ public class Rolo {
 
     public Rolo(int espessuraEntrada, int[] reducoes) {
         this.espessuraEntrada = espessuraEntrada;
-        this.reducoes= reducoes;
+        this.reducoes = reducoes;
     }
 
     public int getEspessuraEntrada() {
@@ -20,19 +18,17 @@ public class Rolo {
         return reducoes;
     }
 
-    public double[] custoPorRecucao() {
+    public double[] custoPorReducao() {
         double[] custos = new double[this.reducoes.length];
         for (int i = 0; i < custos.length; i++) {
-            custos[i]=this.reducoes[i]/(i+1);
+            custos[i] = (double) this.reducoes[i] / (i + 1);
         }
         return custos;
     }
 
     @Override
     public String toString() {
-        return "Rolo entrada " + espessuraEntrada + "mm, reducoes= " + Arrays.toString(reducoes)+"\n";
+        return "rolo " + espessuraEntrada + "mm";
     }
-
-  
 
 }
