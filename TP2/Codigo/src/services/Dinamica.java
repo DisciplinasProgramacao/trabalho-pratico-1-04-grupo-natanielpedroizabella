@@ -9,93 +9,89 @@ public class Dinamica {
 
     private int menorCusto;
     private List<Rolo> rolosSolucao;
+    private int[][] tabela;
 
-    public Dinamica() {
+    public Dinamica(List<Rolo> rolos) {
         this.menorCusto = 0;
         this.rolosSolucao = new ArrayList<>();
+        this.tabela=criarTabela(rolos);
     }
 
     public void progamacaoDinamica(List<Rolo> rolos) {
 
-        var tabela=criarTabela(rolos);
-        
         int index, referencia;
-        for (int i = 2; i < tabela.length; i++) {
-            index=0;
-            referencia=tabela[i-1][i];
-            for (int j = i; j < tabela.length; j++) {
-                Rolo rolo = ListaRolo.procurarPelaEspessura(rolos, tabela[0][i]);
+        for (int i = 2; i < this.tabela.length; i++) {
+            index = 0;
+            referencia = this.tabela[i - 1][i];
+            for (int j = i; j < this.tabela.length; j++) {
+                Rolo rolo = ListaRolo.procurarPelaEspessura(rolos, this.tabela[0][i]);
                 int[] reducoes = rolo.getReducoes();
-                if(index<reducoes.length){
-                    tabela[j][i]=Math.min(tabela[j][i-1],(reducoes[index]+referencia));
-                }else{
-                    tabela[j][i]=1_000;
+                if (index < reducoes.length) {
+                    this.tabela[j][i] = Math.min(this.tabela[j][i - 1], (reducoes[index] + referencia));
+                } else {
+                    this.tabela[j][i] = 1_000;
                 }
                 index++;
             }
 
-            for (int j = i+1; j < tabela.length; j++) {
-                tabela[i][j]=tabela[i][i];
+            for (int j = i + 1; j < this.tabela.length; j++) {
+                this.tabela[i][j] = this.tabela[i][i];
             }
-            
+
         }
-        
-        imprimirTabela(tabela);
-        solucoes(tabela, rolos);
+        solucoes(rolos);
     }
 
     private int[][] criarTabela(List<Rolo> rolos) {
 
-
-        int espInicial=ListaRolo.maiorEspessura(rolos);
-        int espFinal=ListaRolo.menorEspessura(rolos)-1;
-        int n =(espInicial-espFinal)+2;
-        int[][] tabela=new int[n][n];
+        int espInicial = ListaRolo.maiorEspessura(rolos);
+        int espFinal = ListaRolo.menorEspessura(rolos) - 1;
+        int n = (espInicial - espFinal) + 2;
+        int[][] tabela = new int[n][n];
         for (int i = 1; i < tabela.length; i++) {
 
-            tabela[0][i]=espInicial+2-i;
-            tabela[i][0]=espInicial+1-i;
-            tabela[i][1]=1_000;
-            tabela[1][i]=0;
+            tabela[0][i] = espInicial + 2 - i;
+            tabela[i][0] = espInicial + 1 - i;
+            tabela[i][1] = 1_000;
+            tabela[1][i] = 0;
 
         }
+        tabela[0][0] = 0;
+        tabela[0][1] = 0;
         return tabela;
-        
+
     }
 
-    private void imprimirTabela(int[][] tabela){
-        for (int i = 0; i < tabela.length; i++) {
-            for (int j = 0; j < tabela.length; j++) {
-                System.out.printf("|%4d",tabela[j][i]);
+    public void imprimirTabela() {
+        for (int i = 0; i < this.tabela.length; i++) {
+            for (int j = 0; j < this.tabela.length; j++) {
+                System.out.printf("|%4d", this.tabela[j][i]);
             }
             System.out.println("|");
         }
 
     }
-    private void solucoes(int[][] tabela, List<Rolo> rolos){
-        int x= tabela.length-1;
-        int y= tabela.length-1;
-        this.menorCusto=tabela[x][y];
-        int primeiroRolo=tabela[0][2];
-        int roloEsp = tabela[0][y];
-        int custoAtual=tabela[x][y];
-        int custoAnterior=tabela[x][y-1];
+
+    private void solucoes( List<Rolo> rolos) {
+        int index = this.tabela.length - 1;
+        this.menorCusto = this.tabela[index][index];
+        int primeiroRolo = this.tabela[0][2];
+        int roloEsp = this.tabela[0][index];
+        int custoAtual = this.tabela[index][index];
+        int custoAnterior = this.tabela[index][index - 1];
         Rolo rolo;
 
-        while (roloEsp!=primeiroRolo) {
-            while (custoAtual==custoAnterior) {
-                custoAtual=custoAnterior;
-                y--;
-                custoAnterior=tabela[x][y-1];
+        while (roloEsp != primeiroRolo) {
+            if (custoAtual != custoAnterior) {
+                roloEsp = this.tabela[0][index];
+                rolo = ListaRolo.procurarPelaEspessura(rolos, roloEsp);
+                this.rolosSolucao.add(rolo);
             }
-            roloEsp=tabela[0][y];
-            rolo=ListaRolo.procurarPelaEspessura(rolos, roloEsp);
-            this.rolosSolucao.add(rolo);
-            x-=rolo.getReducoes().length;
-            custoAnterior=tabela[x][y-1];
-            custoAtual=tabela[x][y]; 
+            index--;
+            custoAnterior = this.tabela[index][index - 1];
+            custoAtual = this.tabela[index][index];
         }
-        rolosSolucao.sort((( c1, c2)->c2.getEspessuraEntrada()-c1.getEspessuraEntrada()));
+        rolosSolucao.sort(((c1, c2) -> c2.getEspessuraEntrada() - c1.getEspessuraEntrada()));
 
     }
 
@@ -106,7 +102,9 @@ public class Dinamica {
     public List<Rolo> getRolosSolucao() {
         return rolosSolucao;
     }
-    
-    
-}
 
+    public int[][] getTabela() {
+        return tabela;
+    }
+
+}

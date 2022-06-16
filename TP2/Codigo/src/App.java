@@ -34,10 +34,11 @@ public class App {
             System.out.println("Custo: " + guloso.getMenorCusto());
             System.out.println("Rolos usados: " + guloso.getSequenciaRolos());
             System.out.println("\n**** Resultados progamação dinâmica ****\n");
-            Dinamica pd = new Dinamica();
+            Dinamica pd = new Dinamica(rolos);
             pd.progamacaoDinamica(rolos);
             System.out.println("Custo: " + pd.getMenorCusto());
-            System.out.println("Rolos usados: " + pd.getRolosSolucao());
+            System.out.println("Rolos usados: " + pd.getRolosSolucao()+"\n");
+            pd.imprimirTabela();
         }
 
     }
