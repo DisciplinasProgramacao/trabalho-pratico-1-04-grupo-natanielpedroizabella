@@ -3,6 +3,7 @@ import java.util.Stack;
 
 import model.Rolo;
 import services.BackTracking;
+import services.Dinamica;
 import services.ReadFile;
 
 public class App {
@@ -17,14 +18,16 @@ public class App {
 
         for (int i = 0; i < arquivos.length; i++) {
             List<Rolo> rolos = ReadFile.listarRolos(arquivos[i]);
-            int espInicial = rolos.stream().mapToInt(x -> x.getEspessuraEntrada()).max().getAsInt();
+        //     int espInicial = rolos.stream().mapToInt(x -> x.getEspessuraEntrada()).max().getAsInt();
 
-            BackTracking bt = new BackTracking();
+        //     BackTracking bt = new BackTracking();
 
-            bt.backTracking(rolos, espInicial, new Stack<Rolo>(), 0);
-            System.out.println("Custo: " + bt.getMenorCusto());
-            System.out.println("Rolos: \n" + bt.getRolosSolucao());
+        //     bt.backTracking(rolos, espInicial, new Stack<Rolo>(), 0);
+        //     System.out.println("Custo: " + bt.getMenorCusto());
+        //     System.out.println("Rolos: \n" + bt.getRolosSolucao());
+        Dinamica.name(rolos);
         }
+        
 
     }
 

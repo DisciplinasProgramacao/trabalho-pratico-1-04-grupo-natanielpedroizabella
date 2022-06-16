@@ -13,19 +13,15 @@ public class BackTracking {
     
 
     public BackTracking() {
-        this.menorCusto = 10000;
+        this.menorCusto = 1_000;
         this.rolosSolucao = new ArrayList<>();
     }
 
 
 
     private boolean restricoes(int reducao, int custoAtual) {
-        if(reducao<0) return false;
         if(custoAtual+reducao>=menorCusto) return false;;
         return true;
-
-
-        
     }
 
 
