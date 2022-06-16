@@ -1,10 +1,19 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Rolo;
 
 public class Dinamica {
+
+    private int menorCusto;
+    private List<Rolo> rolosSolucao;
+
+    public Dinamica() {
+        this.menorCusto = 0;
+        this.rolosSolucao = new ArrayList<>();
+    }
 
     public void progamacaoDinamica(List<Rolo> rolos) {
 
@@ -32,6 +41,7 @@ public class Dinamica {
         }
         
         imprimirTabela(tabela);
+        solucoes(tabela, rolos);
     }
 
     private int[][] criarTabela(List<Rolo> rolos) {
@@ -62,15 +72,41 @@ public class Dinamica {
         }
 
     }
-    private void solucoes(int[][] tabela){
-        for (int i = 0; i < tabela.length; i++) {
-            for (int j = 0; j < tabela.length; j++) {
-                
+    private void solucoes(int[][] tabela, List<Rolo> rolos){
+        int x= tabela.length-1;
+        int y= tabela.length-1;
+        this.menorCusto=tabela[x][y];
+        int primeiroRolo=tabela[0][2];
+        int roloEsp = tabela[0][y];
+        int custoAtual=tabela[x][y];
+        int custoAnterior=tabela[x][y-1];
+        Rolo rolo;
+
+        while (roloEsp!=primeiroRolo) {
+            while (custoAtual==custoAnterior) {
+                custoAtual=custoAnterior;
+                y--;
+                custoAnterior=tabela[x][y-1];
             }
-            
+            roloEsp=tabela[0][y];
+            rolo=ListaRolo.procurarPelaEspessura(rolos, roloEsp);
+            this.rolosSolucao.add(rolo);
+            x-=rolo.getReducoes().length;
+            custoAnterior=tabela[x][y-1];
+            custoAtual=tabela[x][y]; 
         }
+        rolosSolucao.sort((( c1, c2)->c2.getEspessuraEntrada()-c1.getEspessuraEntrada()));
 
     }
+
+    public int getMenorCusto() {
+        return menorCusto;
+    }
+
+    public List<Rolo> getRolosSolucao() {
+        return rolosSolucao;
+    }
+    
     
 }
 
