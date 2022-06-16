@@ -30,7 +30,7 @@ public class Rolo {
 
     @Override
     public String toString() {
-        return "Rolo [espessuraEntrada=" + espessuraEntrada + ", reducoes=" + Arrays.toString(reducoes) + "]";
+        return "Rolo entrada " + espessuraEntrada + "mm, reducoes= " + Arrays.toString(reducoes)+"\n";
     }
 
   
