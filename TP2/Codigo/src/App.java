@@ -8,8 +8,8 @@ public class App {
 
 
     public static void main(String[] args) throws Exception {
-        List<Rolo> rolos = ReadFile.listarRolos("src/files/LaminacaoTeste1.txt");
-       System.out.println(rolos);
+        List<Rolo> rolos = ReadFile.listarRolos("TP2/Codigo/src/files/LaminacaoTeste1.txt");
+        
 
     }
 
