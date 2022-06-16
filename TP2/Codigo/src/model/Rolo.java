@@ -9,7 +9,7 @@ public class Rolo {
 
     public Rolo(int espessuraEntrada, int reducao1mm, int reducao2mm, int reducao3mm) {
         this.espessuraEntrada = espessuraEntrada;
-        this.reducoes= new int[]{reducao1mm, reducao2mm, reducao3mm};
+        this.reducoes = new int[] { reducao1mm, reducao2mm, reducao3mm };
     }
 
     public int getEspessuraEntrada() {
@@ -24,7 +24,5 @@ public class Rolo {
     public String toString() {
         return "Rolo [espessuraEntrada=" + espessuraEntrada + ", reducoes=" + Arrays.toString(reducoes) + "]";
     }
-
-  
 
 }
