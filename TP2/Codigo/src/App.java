@@ -11,14 +11,15 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        String[] arquivos = { "TP2/Codigo/src/files/LaminacaoTeste5.txt",
+        String[] arquivos = { "TP2/Codigo/src/files/LaminacaoTeste1.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste2.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste3.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste4.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste5.txt"
         };
 
-        int j = 0;
+        int j = 1;
+        System.out.println("\n**** Resultados bactracking ****\n");
         for (int i = 0; i < arquivos.length; i++) {
             List<Rolo> rolos = ReadFile.listarRolos(arquivos[i]);
             int espInicial = rolos.stream().mapToInt(x -> x.getEspessuraEntrada()).max().getAsInt();
@@ -31,7 +32,8 @@ public class App {
             j++;
         }
 
-        j = 0;
+        j = 1;
+        System.out.println("\n**** Resultados guloso ****\n");
         for (int i = 0; i < arquivos.length; i++) {
             List<Rolo> rolos = ReadFile.listarRolos(arquivos[i]);
             int espInicial = rolos.stream().mapToInt(x -> x.getEspessuraEntrada()).max().getAsInt();
