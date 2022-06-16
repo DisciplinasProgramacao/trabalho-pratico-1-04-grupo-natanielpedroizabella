@@ -26,8 +26,8 @@ public class Guloso {
             if (espessuraEntrada >= espessuraMinima) {
                 int j = 1;
                 custoReducaoOtima = Double.MAX_VALUE;
-                for (Double reducao : rolos.get(i).custoPorRecucao()) {
-                    if ((reducao < custoReducaoOtima) && (reducao != -1)) {
+                for (Double reducao : rolos.get(i).custoPorReducao()) {
+                    if (reducao < custoReducaoOtima) {
                         custoReducaoOtima = reducao;
                         espesssuraReducao = j;
                     }

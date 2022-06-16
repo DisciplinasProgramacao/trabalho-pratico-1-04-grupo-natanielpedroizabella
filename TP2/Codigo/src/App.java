@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -14,8 +13,7 @@ public class App {
         String[] arquivos = { "TP2/Codigo/src/files/LaminacaoTeste1.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste2.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste3.txt",
-                "TP2/Codigo/src/files/LaminacaoTeste4.txt",
-                "TP2/Codigo/src/files/LaminacaoTeste5.txt"
+                "TP2/Codigo/src/files/LaminacaoTeste4.txt"
         };
 
         int j = 1;
