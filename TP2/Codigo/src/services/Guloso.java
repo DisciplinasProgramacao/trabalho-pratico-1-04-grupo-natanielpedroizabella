@@ -7,29 +7,47 @@ import model.Rolo;
 
 public class Guloso {
 
-    private List<Rolo> sequenciaRolos = new ArrayList<>();
+    private List<Rolo> sequenciaRolos;
+    public int menorCusto;
 
-    public List<Rolo> sequenciaRolos(List<Rolo> rolos) {
+    public Guloso() {
+        this.menorCusto = 0;
+        this.sequenciaRolos = new ArrayList<>();
+    }
+
+    public List<Rolo> sequenciaRolos(List<Rolo> rolos, int espessuraEntrada) {
         int espessuraMinima = 4;
         int espesssuraReducao = 0;
-        int espessuraEntrada = rolos.get(0).getEspessuraEntrada();
-        double reducaoOtima = Double.MAX_VALUE;
-        int custoReducao = 0;
+        double custoReducaoOtima = Double.MAX_VALUE;
+        int[] aux;
 
         for (int i = 0; i < rolos.size(); i++) {
-            int j = 0;
-            for (Double reducao : rolos.get(i).custoPorRecucao()) {
-                if (reducao < reducaoOtima) {
-                    reducaoOtima = reducao;
-                    espesssuraReducao = j;
-                    int[] aux = rolos.get(i).getReducoes();
-                    custoReducao = custoReducao + aux[j];
+            aux = rolos.get(i).getReducoes();
+            if (espessuraEntrada >= espessuraMinima) {
+                int j = 1;
+                custoReducaoOtima = Double.MAX_VALUE;
+                for (Double reducao : rolos.get(i).custoPorRecucao()) {
+                    if ((reducao < custoReducaoOtima) && (reducao != -1)) {
+                        custoReducaoOtima = reducao;
+                        espesssuraReducao = j;
+                    }
+                    j++;
                 }
-                j++;
+                this.menorCusto += aux[espesssuraReducao - 1];
+                sequenciaRolos.add(rolos.get(i));
+                i += espesssuraReducao - 1;
+                espessuraEntrada = espessuraEntrada - espesssuraReducao;
             }
-            espessuraEntrada = espessuraEntrada - espesssuraReducao;
         }
         return sequenciaRolos;
     }
+
+    public List<Rolo> getSequenciaRolos() {
+        return sequenciaRolos;
+    }
+
+    public int getMenorCusto() {
+        return menorCusto;
+    }
+
 }
-// Faço a redução e depois chamo o get daquela posição.

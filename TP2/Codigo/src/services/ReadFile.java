@@ -20,12 +20,15 @@ public class ReadFile {
         while (sc.hasNextLine()) {
             String str = sc.nextLine();
             int[] ctrl = Arrays.stream(str.split(" "))
-                    .mapToInt(s -> s.equals("x") ? -1 : Integer.parseInt(s)).toArray();
-            rolos.add(new Rolo(ctrl[0], ctrl[1], ctrl[2], ctrl[3]));
+                    .filter(s -> s.length() >= 1)
+                    .mapToInt(s -> s.equals("x") ? -1 : Integer.parseInt(s))
+                    .filter(x -> x > 0).toArray();
+
+            rolos.add(new Rolo(ctrl[0], Arrays.copyOfRange(ctrl, 1, ctrl.length)));
         }
 
         sc.close();
         return rolos;
     }
-    
+
 }
