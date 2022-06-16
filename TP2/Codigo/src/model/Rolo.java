@@ -20,6 +20,14 @@ public class Rolo {
         return reducoes;
     }
 
+    public double[] custoPorRecucao() {
+        double[] custos = new double[3];
+        for (int i = 0; i < custos.length; i++) {
+            custos[i]=this.reducoes[i]/(i+1);
+        }
+        return custos;
+    }
+
     @Override
     public String toString() {
         return "Rolo [espessuraEntrada=" + espessuraEntrada + ", reducoes=" + Arrays.toString(reducoes) + "]";
