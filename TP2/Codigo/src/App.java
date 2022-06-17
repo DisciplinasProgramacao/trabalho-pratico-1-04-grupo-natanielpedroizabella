@@ -1,12 +1,15 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.List;
 import java.util.Stack;
 
 import model.Rolo;
 import services.BackTracking;
 import services.Dinamica;
+import services.GerenciarArquivo;
 import services.Guloso;
 import services.ListaRolo;
-import services.ReadFile;
 
 public class App {
 
@@ -17,11 +20,11 @@ public class App {
                 "TP2/Codigo/src/files/LaminacaoTeste3.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste4.txt"
         };
-
-        System.out.println("\n**** Resultados bactracking ****\n");
+        BufferedWriter bw = GerenciarArquivo.abrirRelatorio();
         for (int i = 0; i < arquivos.length; i++) {
-            List<Rolo> rolos = ReadFile.listarRolos(arquivos[i]);
+            List<Rolo> rolos = GerenciarArquivo.listarRolos(arquivos[i]);
             int espInicial = ListaRolo.maiorEspessura(rolos);
+
             System.out.println("\n**** Laminação Teste " + (i + 1) + " ****\n");
             System.out.println("**** Resultados bactracking ****\n");
             BackTracking bt = new BackTracking();
@@ -37,9 +40,12 @@ public class App {
             Dinamica pd = new Dinamica(rolos);
             pd.progamacaoDinamica(rolos);
             System.out.println("Custo: " + pd.getMenorCusto());
-            System.out.println("Rolos usados: " + pd.getRolosSolucao()+"\n");
+            System.out.println("Rolos usados: " + pd.getRolosSolucao() + "\n");
             pd.imprimirTabela();
+
+            GerenciarArquivo.escreverRelatorio(i, guloso, bt, pd, bw);
         }
+        GerenciarArquivo.fecharRelatorio(bw);
 
     }
 

@@ -17,7 +17,7 @@ public class BackTracking {
     }
 
     private boolean restricoes(int reducao, int custoAtual) {
-        if (custoAtual + reducao >= menorCusto)
+        if (custoAtual + reducao > menorCusto)
             return false;
         ;
         return true;
