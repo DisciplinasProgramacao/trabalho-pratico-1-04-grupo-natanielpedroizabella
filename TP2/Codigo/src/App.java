@@ -20,7 +20,7 @@ public class App {
         long tempoExecucaoGuloso = 0;
         long tempoExecucaoDinamica = 0;
 
-        BufferedWriter bw = GerenciarArquivo.abrirRelatorio();
+       
 
         String[] arquivos = { "TP2/Codigo/src/files/LaminacaoTeste1.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste2.txt",
@@ -28,7 +28,7 @@ public class App {
                 "TP2/Codigo/src/files/LaminacaoTeste4.txt"
         };
 
-       
+        BufferedWriter bw = GerenciarArquivo.abrirRelatorio();
 
         for (int i = 0; i < arquivos.length; i++) {
 
@@ -43,7 +43,7 @@ public class App {
             bt.backTracking(rolos, espInicial, new Stack<Rolo>(), 0);
             tempoExecucaoFinal = System.currentTimeMillis();
 
-            tempoExecucaoBackTracking = ((tempoExecucaoFinal - tempoExecucaoInicial) / 1000);
+            tempoExecucaoBackTracking = ((tempoExecucaoFinal - tempoExecucaoInicial));
 
             System.out.println("Custo: " + bt.getMenorCusto());
             System.out.println("Rolos usados: " + bt.getRolosSolucao());
@@ -57,7 +57,7 @@ public class App {
             guloso.sequenciaRolos(rolos, espInicial);
             tempoExecucaoFinal = System.currentTimeMillis();
 
-            tempoExecucaoGuloso = ((tempoExecucaoFinal - tempoExecucaoInicial) / 1000);
+            tempoExecucaoGuloso = ((tempoExecucaoFinal - tempoExecucaoInicial));
 
             System.out.println("Custo: " + guloso.getMenorCusto());
             System.out.println("Rolos usados: " + guloso.getSequenciaRolos());
@@ -71,10 +71,10 @@ public class App {
             pd.progamacaoDinamica(rolos);
             tempoExecucaoFinal = System.currentTimeMillis();
 
-            tempoExecucaoDinamica = ((tempoExecucaoFinal - tempoExecucaoInicial) / 1000);
+            tempoExecucaoDinamica = ((tempoExecucaoFinal - tempoExecucaoInicial));
 
             System.out.println("Custo: " + pd.getMenorCusto());
-            System.out.println("Rolos usados: " + pd.getRolosSolucao() + "\n");
+            System.out.println("Rolos usados: " + pd.getRolosSolucao());
             System.out.println("Tempo de execução: " + tempoExecucaoDinamica);
             pd.imprimirTabela();
 

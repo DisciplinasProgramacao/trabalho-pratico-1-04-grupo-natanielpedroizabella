@@ -45,7 +45,7 @@ public class GerenciarArquivo {
         bw.newLine();
         bw.write("Rolos usados: " + bt.getRolosSolucao());
         bw.newLine();
-        System.out.println("Tempo de execução: " + tempoExecucaoBackTracking);
+        bw.write("Tempo de execução: " + tempoExecucaoBackTracking);
         bw.newLine();
         bw.write("\n**** Resultados guloso ****\n");
         bw.newLine();
@@ -53,7 +53,7 @@ public class GerenciarArquivo {
         bw.newLine();
         bw.write("Rolos usados: " + guloso.getSequenciaRolos());
         bw.newLine();
-        System.out.println("Tempo de execução: " + tempoExecucaoGuloso);
+        bw.write("Tempo de execução: " + tempoExecucaoGuloso);
         bw.newLine();
         bw.write("\n**** Resultados progamação dinâmica ****\n");
         bw.write("Custo: " + pd.getMenorCusto());
@@ -69,7 +69,7 @@ public class GerenciarArquivo {
             bw.newLine();
         }
         bw.newLine();
-        System.out.println("Tempo de execução: " + tempoExecucaoDinamica);
+        bw.write("Tempo de execução: " + tempoExecucaoDinamica);
         
     }
     public static void fecharRelatorio(BufferedWriter bw) throws IOException {
