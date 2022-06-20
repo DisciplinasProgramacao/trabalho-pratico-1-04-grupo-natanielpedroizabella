@@ -13,14 +13,11 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        
         long tempoExecucaoInicial = 0;
         long tempoExecucaoFinal = 0;
         long tempoExecucaoBackTracking = 0;
         long tempoExecucaoGuloso = 0;
         long tempoExecucaoDinamica = 0;
-
-       
 
         String[] arquivos = { "TP2/Codigo/src/files/LaminacaoTeste1.txt",
                 "TP2/Codigo/src/files/LaminacaoTeste2.txt",
@@ -47,8 +44,7 @@ public class App {
 
             System.out.println("Custo: " + bt.getMenorCusto());
             System.out.println("Rolos usados: " + bt.getRolosSolucao());
-            System.out.println("Tempo de execução: " + tempoExecucaoBackTracking);
-
+            System.out.println("Tempo de execução: " + tempoExecucaoBackTracking + " ms");
 
             System.out.println("\n**** Resultados guloso ****\n");
 
@@ -61,8 +57,7 @@ public class App {
 
             System.out.println("Custo: " + guloso.getMenorCusto());
             System.out.println("Rolos usados: " + guloso.getSequenciaRolos());
-            System.out.println("Tempo de execução: " + tempoExecucaoGuloso);
-            
+            System.out.println("Tempo de execução: " + tempoExecucaoGuloso + " ms");
 
             System.out.println("\n**** Resultados progamação dinâmica ****\n");
 
@@ -75,10 +70,11 @@ public class App {
 
             System.out.println("Custo: " + pd.getMenorCusto());
             System.out.println("Rolos usados: " + pd.getRolosSolucao());
-            System.out.println("Tempo de execução: " + tempoExecucaoDinamica);
+            System.out.println("Tempo de execução: " + tempoExecucaoDinamica + " ms" + "\n");
             pd.imprimirTabela();
 
-            GerenciarArquivo.escreverRelatorio(i, guloso, bt, pd, bw, tempoExecucaoBackTracking, tempoExecucaoGuloso, tempoExecucaoDinamica);
+            GerenciarArquivo.escreverRelatorio(i, guloso, bt, pd, bw, tempoExecucaoBackTracking, tempoExecucaoGuloso,
+                    tempoExecucaoDinamica);
         }
         GerenciarArquivo.fecharRelatorio(bw);
 

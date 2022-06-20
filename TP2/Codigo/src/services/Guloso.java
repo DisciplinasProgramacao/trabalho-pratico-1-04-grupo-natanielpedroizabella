@@ -17,7 +17,7 @@ public class Guloso {
 
     public List<Rolo> sequenciaRolos(List<Rolo> rolos, int espessuraEntrada) {
         int espessuraMinima = 4;
-        int espesssuraReducao = 0;
+        int espessuraReducao = 0;
         double custoReducaoOtima = Double.MAX_VALUE;
         int[] aux;
 
@@ -29,14 +29,14 @@ public class Guloso {
                 for (Double reducao : rolos.get(i).custoPorReducao()) {
                     if (reducao < custoReducaoOtima) {
                         custoReducaoOtima = reducao;
-                        espesssuraReducao = j;
+                        espessuraReducao = j;
                     }
                     j++;
                 }
-                this.menorCusto += aux[espesssuraReducao - 1];
+                this.menorCusto += aux[espessuraReducao - 1];
                 sequenciaRolos.add(rolos.get(i));
-                i += espesssuraReducao - 1;
-                espessuraEntrada = espessuraEntrada - espesssuraReducao;
+                i += espessuraReducao - 1;
+                espessuraEntrada -= espessuraReducao;
             }
         }
         return sequenciaRolos;

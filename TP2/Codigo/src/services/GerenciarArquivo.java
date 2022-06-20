@@ -33,11 +33,13 @@ public class GerenciarArquivo {
         sc.close();
         return rolos;
     }
+
     public static BufferedWriter abrirRelatorio() throws IOException {
-        return new BufferedWriter( new FileWriter( new File("TP2/Codigo/src/files/relatorio.txt")));
+        return new BufferedWriter(new FileWriter(new File("TP2/Codigo/src/files/relatorio.txt")));
     }
 
-    public static void escreverRelatorio(int teste,Guloso guloso, BackTracking bt, Dinamica pd, BufferedWriter bw, long tempoExecucaoBackTracking, long tempoExecucaoGuloso, long tempoExecucaoDinamica) throws IOException{
+    public static void escreverRelatorio(int teste, Guloso guloso, BackTracking bt, Dinamica pd, BufferedWriter bw,
+            long tempoExecucaoBackTracking, long tempoExecucaoGuloso, long tempoExecucaoDinamica) throws IOException {
         bw.write("\n**** Laminação Teste " + (teste + 1) + " ****\n");
         bw.write("**** Resultados bactracking ****\n");
         bw.newLine();
@@ -45,7 +47,7 @@ public class GerenciarArquivo {
         bw.newLine();
         bw.write("Rolos usados: " + bt.getRolosSolucao());
         bw.newLine();
-        bw.write("Tempo de execução: " + tempoExecucaoBackTracking);
+        bw.write("Tempo de execução: " + tempoExecucaoBackTracking + " ms");
         bw.newLine();
         bw.write("\n**** Resultados guloso ****\n");
         bw.newLine();
@@ -53,14 +55,17 @@ public class GerenciarArquivo {
         bw.newLine();
         bw.write("Rolos usados: " + guloso.getSequenciaRolos());
         bw.newLine();
-        bw.write("Tempo de execução: " + tempoExecucaoGuloso);
+        bw.write("Tempo de execução: " + tempoExecucaoGuloso + " ms");
         bw.newLine();
         bw.write("\n**** Resultados progamação dinâmica ****\n");
         bw.write("Custo: " + pd.getMenorCusto());
         bw.newLine();
-        bw.write("Rolos usados: " + pd.getRolosSolucao()+"\n");
+        bw.write("Rolos usados: " + pd.getRolosSolucao());
         bw.newLine();
-        int[][]tabela =pd.getTabela();
+        bw.write("Tempo de execução: " + tempoExecucaoDinamica + " ms");
+        bw.newLine();
+        bw.newLine();
+        int[][] tabela = pd.getTabela();
         for (int i = 0; i < tabela.length; i++) {
             for (int j = 0; j < tabela.length; j++) {
                 bw.write(String.format("|%4d", tabela[j][i]));
@@ -69,13 +74,11 @@ public class GerenciarArquivo {
             bw.newLine();
         }
         bw.newLine();
-        bw.write("Tempo de execução: " + tempoExecucaoDinamica);
-        
+
     }
+
     public static void fecharRelatorio(BufferedWriter bw) throws IOException {
         bw.close();
     }
-
-
 
 }

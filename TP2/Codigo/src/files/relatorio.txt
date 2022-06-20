@@ -4,15 +4,18 @@
 
 Custo: 24
 Rolos usados: [rolo 10mm, rolo 7mm]
+Tempo de execução: 6 ms
 
 **** Resultados guloso ****
 
 Custo: 24
 Rolos usados: [rolo 10mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 0 ms
 
 **** Resultados progamação dinâmica ****
 Custo: 24
 Rolos usados: [rolo 10mm, rolo 7mm, rolo 6mm]
+Tempo de execução: 1 ms
 
 |   0|  10|   9|   8|   7|   6|   5|   4|
 |   0|   0|1000|1000|1000|1000|1000|1000|
@@ -23,20 +26,24 @@ Rolos usados: [rolo 10mm, rolo 7mm, rolo 6mm]
 |   6|   0|   4|   6|   8|  12|  17|  24|
 |   5|   0|   4|   6|   8|  12|  17|  24|
 
+
 **** Laminação Teste 2 ****
 **** Resultados bactracking ****
 
 Custo: 51
 Rolos usados: [rolo 15mm, rolo 12mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 6 ms
 
 **** Resultados guloso ****
 
 Custo: 51
 Rolos usados: [rolo 15mm, rolo 12mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 0 ms
 
 **** Resultados progamação dinâmica ****
 Custo: 51
 Rolos usados: [rolo 15mm, rolo 12mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 0 ms
 
 |   0|  15|  14|  13|  12|  11|  10|   9|   8|   7|   6|   5|   4|
 |   0|   0|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|
@@ -52,20 +59,24 @@ Rolos usados: [rolo 15mm, rolo 12mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, r
 |   6|   0|   4|   6|   8|  12|  17|  22|  27|  32|  38|  44|  54|
 |   5|   0|   4|   6|   8|  12|  17|  22|  27|  32|  38|  44|  51|
 
+
 **** Laminação Teste 3 ****
 **** Resultados bactracking ****
 
 Custo: 57
 Rolos usados: [rolo 20mm, rolo 17mm, rolo 14mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 13 ms
 
 **** Resultados guloso ****
 
 Custo: 58
 Rolos usados: [rolo 20mm, rolo 19mm, rolo 18mm, rolo 16mm, rolo 13mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 0 ms
 
 **** Resultados progamação dinâmica ****
 Custo: 57
 Rolos usados: [rolo 20mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, rolo 6mm, rolo 5mm]
+Tempo de execução: 0 ms
 
 |   0|  20|  19|  18|  17|  16|  15|  14|  13|  12|  11|  10|   9|   8|   7|   6|   5|   4|
 |   0|   0|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|
@@ -86,20 +97,24 @@ Rolos usados: [rolo 20mm, rolo 11mm, rolo 10mm, rolo 9mm, rolo 8mm, rolo 7mm, ro
 |   6|   0|   1|   2|   3|   5|   7|   9|  12|  15|  18|  23|  28|  33|  38|  44|  50|  60|
 |   5|   0|   1|   2|   3|   5|   7|   9|  12|  15|  18|  23|  28|  33|  38|  44|  50|  57|
 
+
 **** Laminação Teste 4 ****
 **** Resultados bactracking ****
 
 Custo: 95
 Rolos usados: [rolo 25mm, rolo 24mm, rolo 23mm, rolo 22mm, rolo 20mm, rolo 19mm, rolo 18mm, rolo 17mm, rolo 16mm, rolo 13mm, rolo 10mm, rolo 7mm]
+Tempo de execução: 82 ms
 
 **** Resultados guloso ****
 
 Custo: 95
 Rolos usados: [rolo 25mm, rolo 24mm, rolo 23mm, rolo 22mm, rolo 21mm, rolo 20mm, rolo 19mm, rolo 18mm, rolo 17mm, rolo 16mm, rolo 13mm, rolo 10mm, rolo 7mm]
+Tempo de execução: 0 ms
 
 **** Resultados progamação dinâmica ****
 Custo: 95
 Rolos usados: [rolo 25mm, rolo 24mm, rolo 23mm, rolo 22mm, rolo 20mm, rolo 19mm, rolo 18mm, rolo 17mm, rolo 13mm]
+Tempo de execução: 0 ms
 
 |   0|  25|  24|  23|  22|  21|  20|  19|  18|  17|  16|  15|  14|  13|  12|  11|  10|   9|   8|   7|   6|   5|   4|
 |   0|   0|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|1000|
@@ -124,3 +139,4 @@ Rolos usados: [rolo 25mm, rolo 24mm, rolo 23mm, rolo 22mm, rolo 20mm, rolo 19mm,
 |   7|   0|   1|   2|   3|   5|   7|   9|  12|  15|  19|  24|  27|  32|  39|  44|  50|  57|  63|  70|  79|  86|  95|
 |   6|   0|   1|   2|   3|   5|   7|   9|  12|  15|  19|  24|  27|  32|  39|  44|  50|  57|  63|  70|  79|  86|  95|
 |   5|   0|   1|   2|   3|   5|   7|   9|  12|  15|  19|  24|  27|  32|  39|  44|  50|  57|  63|  70|  79|  86|  95|
+
