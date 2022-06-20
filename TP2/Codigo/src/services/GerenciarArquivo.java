@@ -37,7 +37,7 @@ public class GerenciarArquivo {
         return new BufferedWriter( new FileWriter( new File("TP2/Codigo/src/files/relatorio.txt")));
     }
 
-    public static void escreverRelatorio(int teste,Guloso guloso, BackTracking bt, Dinamica pd, BufferedWriter bw) throws IOException{
+    public static void escreverRelatorio(int teste,Guloso guloso, BackTracking bt, Dinamica pd, BufferedWriter bw, long tempoExecucaoBackTracking, long tempoExecucaoGuloso, long tempoExecucaoDinamica) throws IOException{
         bw.write("\n**** Laminação Teste " + (teste + 1) + " ****\n");
         bw.write("**** Resultados bactracking ****\n");
         bw.newLine();
@@ -45,11 +45,15 @@ public class GerenciarArquivo {
         bw.newLine();
         bw.write("Rolos usados: " + bt.getRolosSolucao());
         bw.newLine();
+        System.out.println("Tempo de execução: " + tempoExecucaoBackTracking);
+        bw.newLine();
         bw.write("\n**** Resultados guloso ****\n");
         bw.newLine();
         bw.write("Custo: " + guloso.getMenorCusto());
         bw.newLine();
         bw.write("Rolos usados: " + guloso.getSequenciaRolos());
+        bw.newLine();
+        System.out.println("Tempo de execução: " + tempoExecucaoGuloso);
         bw.newLine();
         bw.write("\n**** Resultados progamação dinâmica ****\n");
         bw.write("Custo: " + pd.getMenorCusto());
@@ -64,6 +68,8 @@ public class GerenciarArquivo {
             bw.write("|");
             bw.newLine();
         }
+        bw.newLine();
+        System.out.println("Tempo de execução: " + tempoExecucaoDinamica);
         
     }
     public static void fecharRelatorio(BufferedWriter bw) throws IOException {
